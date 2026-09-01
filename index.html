@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ============================ Primary SEO ============================ -->
+  <title>RedLight-VLA: Traffic-Rule Grounding &amp; Behavioral Emphasis in Driving Policies (ECCV 2026 DriveX)</title>
+  <meta name="description" content="RedLight-VLA is a training objective for Vision-Language-Action (VLA) driving policies that grounds traffic-light and stop-line state and emphasizes rare braking/launching maneuvers at signalized intersections. ECCV 2026 DriveX Workshop. arXiv:2608.28656." />
+  <meta name="keywords" content="RedLight-VLA, Vision-Language-Action, VLA driving policy, autonomous driving, traffic light, stop line, behavioral reweighting, auxiliary supervision, trajectory prediction, end-to-end driving, ECCV 2026, DriveX, signalized intersection, imitation learning, behavior cloning" />
+  <meta name="author" content="Bala Murali Manoghar Sai Sudhakar, Sourab Bapu Sridhar, Sandipan Das, Rahul Ahuja, Meda Lazar, Ashish Garg, Pratik Likhar, Senthil Yogamani" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://rahuja123.github.io/redlight-vla/" />
+
+  <!-- ============================ Open Graph ============================ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="RedLight-VLA" />
+  <meta property="og:title" content="RedLight-VLA: Traffic-Rule Grounding & Behavioral Emphasis in Driving Policies" />
+  <meta property="og:description" content="A training objective for VLA driving policies that grounds traffic-light/stop-line state and emphasizes rare rule-governed maneuvers. ECCV 2026 DriveX Workshop." />
+  <meta property="og:url" content="https://rahuja123.github.io/redlight-vla/" />
+  <meta property="og:image" content="https://rahuja123.github.io/redlight-vla/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="RedLight-VLA — ECCV 2026 DriveX Workshop paper title card" />
+
+  <!-- ============================ Twitter / X ============================ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RedLight-VLA: Traffic-Rule Grounding & Behavioral Emphasis in Driving Policies" />
+  <meta name="twitter:description" content="A training objective for VLA driving policies that grounds traffic-light/stop-line state and emphasizes rare rule-governed maneuvers. ECCV 2026 DriveX Workshop." />
+  <meta name="twitter:image" content="https://rahuja123.github.io/redlight-vla/assets/og-image.png" />
+
+  <!-- ============= Google Scholar / Highwire citation tags ============= -->
+  <!-- citation_title is the EXACT arXiv title so Scholar links this page to the paper -->
+  <meta name="citation_title" content="RedLight-VLA: Models for traffic-rule grounding and behavioral emphasis in driving policies" />
+  <meta name="citation_author" content="Sudhakar, Bala Murali Manoghar Sai" />
+  <meta name="citation_author" content="Sridhar, Sourab Bapu" />
+  <meta name="citation_author" content="Das, Sandipan" />
+  <meta name="citation_author" content="Ahuja, Rahul" />
+  <meta name="citation_author" content="Lazar, Meda" />
+  <meta name="citation_author" content="Garg, Ashish" />
+  <meta name="citation_author" content="Likhar, Pratik" />
+  <meta name="citation_author" content="Yogamani, Senthil" />
+  <meta name="citation_publication_date" content="2026/08/21" />
+  <meta name="citation_online_date" content="2026/08/21" />
+  <meta name="citation_conference_title" content="European Conference on Computer Vision (ECCV) Workshops — DriveX" />
+  <meta name="citation_arxiv_id" content="2608.28656" />
+  <meta name="citation_abstract_html_url" content="https://arxiv.org/abs/2608.28656" />
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2608.28656" />
+
+  <!-- ============================ Favicon ============================ -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0f1a'/%3E%3Ccircle cx='50' cy='28' r='13' fill='%23ff4d4d'/%3E%3Ccircle cx='50' cy='50' r='13' fill='%23ffcc33'/%3E%3Ccircle cx='50' cy='72' r='13' fill='%2343d17a'/%3E%3C/svg%3E" />
+
+  <!-- ============================ JSON-LD ============================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "RedLight-VLA: Models for traffic-rule grounding and behavioral emphasis in driving policies",
+    "name": "RedLight-VLA: Models for traffic-rule grounding and behavioral emphasis in driving policies",
+    "author": [
+      {"@type": "Person", "name": "Bala Murali Manoghar Sai Sudhakar"},
+      {"@type": "Person", "name": "Sourab Bapu Sridhar"},
+      {"@type": "Person", "name": "Sandipan Das"},
+      {"@type": "Person", "name": "Rahul Ahuja"},
+      {"@type": "Person", "name": "Meda Lazar"},
+      {"@type": "Person", "name": "Ashish Garg"},
+      {"@type": "Person", "name": "Pratik Likhar"},
+      {"@type": "Person", "name": "Senthil Yogamani"}
+    ],
+    "datePublished": "2026-08-21",
+    "publisher": {"@type": "Organization", "name": "arXiv"},
+    "identifier": {"@type": "PropertyValue", "propertyID": "arXiv", "value": "arXiv:2608.28656"},
+    "url": "https://rahuja123.github.io/redlight-vla/",
+    "sameAs": ["https://arxiv.org/abs/2608.28656"],
+    "image": "https://rahuja123.github.io/redlight-vla/assets/og-image.png",
+    "isPartOf": {"@type": "PublicationEvent", "name": "ECCV 2026 DriveX Workshop"},
+    "keywords": "Vision-Language-Action, autonomous driving, traffic-light grounding, behavioral reweighting, trajectory prediction",
+    "abstract": "Behavior-cloned Vision-Language-Action (VLA) driving policies struggle with rare rule-governed maneuvers at signalized intersections. RedLight-VLA is a training objective that uses expert futures and automatically generated perception targets: trajectory-derived behavioral reweighting emphasizes rare deceleration/acceleration, and parallel auxiliary heads ground traffic-light and stop-line state in continuous post-fusion rule tokens."
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#ffffff; --surface:#f6f8fc; --surface-2:#eef2f9;
+      --ink:#12161f; --muted:#5a6478; --line:#e2e8f2;
+      --brand:#c62828; --brand-2:#1565c0; --accent:#2e7d32;
+      --amber:#f9a825; --radius:16px; --maxw:920px;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0f1a; --surface:#121828; --surface-2:#161d30;
+        --ink:#eef2fb; --muted:#9aa6bf; --line:#243049;
+        --brand:#ff6b6b; --brand-2:#7aa8ff; --accent:#5bd88a; --amber:#ffcc33;
+      }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+      line-height:1.65;-webkit-font-smoothing:antialiased;}
+    a{color:var(--brand-2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+    /* ---- traffic-light top bar ---- */
+    .topbar{height:6px;display:flex}
+    .topbar i{flex:1}
+    .topbar i:nth-child(1){background:var(--brand)}
+    .topbar i:nth-child(2){background:var(--amber)}
+    .topbar i:nth-child(3){background:var(--accent)}
+
+    /* ---- hero ---- */
+    header.hero{padding:56px 0 30px;text-align:center}
+    .badge{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.04em;
+      text-transform:uppercase;color:var(--brand-2);background:var(--surface-2);
+      border:1px solid var(--line);padding:7px 15px;border-radius:999px;margin-bottom:22px}
+    h1.title{font-size:clamp(1.9rem,4.6vw,3rem);line-height:1.12;margin:.1em 0 .35em;
+      letter-spacing:-.02em;font-weight:800}
+    h1.title .accent{color:var(--brand)}
+    .subtitle{font-size:clamp(1rem,2.2vw,1.25rem);color:var(--muted);max-width:720px;
+      margin:0 auto 26px}
+    .authors{font-size:1.02rem;line-height:2;margin:6px 0 4px}
+    .authors a{color:var(--ink);font-weight:600}
+    .authors .sep{color:var(--muted)}
+    .venue{color:var(--muted);margin-top:10px;font-size:.98rem}
+    .venue b{color:var(--ink)}
+
+    /* ---- buttons ---- */
+    .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:28px 0 8px}
+    .btn{display:inline-flex;align-items:center;gap:9px;font-weight:650;font-size:.98rem;
+      padding:11px 20px;border-radius:999px;border:1px solid var(--line);
+      background:var(--ink);color:var(--bg);transition:transform .12s ease,opacity .12s ease}
+    .btn:hover{transform:translateY(-2px);text-decoration:none;opacity:.92}
+    .btn.ghost{background:transparent;color:var(--ink)}
+    .btn svg{width:18px;height:18px;fill:currentColor;flex:none}
+
+    /* ---- sections ---- */
+    section{padding:34px 0;border-top:1px solid var(--line)}
+    section:first-of-type{border-top:none}
+    h2{font-size:1.5rem;font-weight:750;letter-spacing:-.01em;margin:0 0 14px;
+      display:flex;align-items:center;gap:11px}
+    h2::before{content:"";width:10px;height:22px;border-radius:3px;
+      background:linear-gradient(var(--brand),var(--amber),var(--accent))}
+    .abstract p{font-size:1.06rem;color:var(--ink)}
+
+    /* ---- method cards ---- */
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:22px}
+    .card h3{margin:0 0 8px;font-size:1.12rem}
+    .card .tag{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:700;
+      padding:3px 9px;border-radius:6px;background:var(--surface-2);color:var(--brand-2);
+      margin-bottom:12px}
+    .card p{margin:0;color:var(--muted);font-size:.98rem}
+    @media (max-width:640px){.cards{grid-template-columns:1fr}}
+
+    /* ---- results table ---- */
+    .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+    table{border-collapse:collapse;width:100%;font-size:.96rem;min-width:520px}
+    th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line)}
+    thead th{background:var(--surface-2);font-weight:700;font-size:.82rem;
+      text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+    tbody tr:last-child td{border-bottom:none}
+    td.num{font-family:var(--mono);text-align:right}
+    .better{color:var(--accent);font-weight:700}
+    .caption{color:var(--muted);font-size:.86rem;margin-top:10px}
+
+    /* ---- highlight stats ---- */
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0 6px}
+    .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:20px;text-align:center}
+    .stat .big{font-size:1.7rem;font-weight:800;color:var(--brand)}
+    .stat .lbl{color:var(--muted);font-size:.86rem;margin-top:4px}
+    @media (max-width:640px){.stats{grid-template-columns:1fr}}
+
+    /* ---- bibtex ---- */
+    pre.bib{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);
+      padding:20px;overflow-x:auto;font-family:var(--mono);font-size:.86rem;line-height:1.6;
+      color:var(--ink)}
+    .copybar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .copybtn{cursor:pointer;font-family:var(--sans);font-weight:650;font-size:.85rem;
+      padding:7px 14px;border-radius:8px;border:1px solid var(--line);
+      background:var(--surface);color:var(--ink)}
+    .copybtn:hover{background:var(--surface-2)}
+
+    footer{padding:30px 0 50px;text-align:center;color:var(--muted);font-size:.88rem;
+      border-top:1px solid var(--line)}
+  </style>
+</head>
+<body>
+  <div class="topbar"><i></i><i></i><i></i></div>
+
+  <div class="wrap">
+    <!-- ============================ HERO ============================ -->
+    <header class="hero">
+      <span class="badge">ECCV 2026 · DriveX Workshop</span>
+      <h1 class="title"><span class="accent">RedLight-VLA</span>: Traffic-Rule Grounding &amp; Behavioral Emphasis in Driving Policies</h1>
+      <p class="subtitle">A training objective that teaches Vision-Language-Action driving policies to obey traffic lights and stop lines — emphasizing the rare braking and launching maneuvers that averaged trajectory loss ignores.</p>
+
+      <div class="authors">
+        <span>Bala Murali Manoghar Sai Sudhakar</span><span class="sep"> · </span>
+        <span>Sourab Bapu Sridhar</span><span class="sep"> · </span>
+        <span>Sandipan Das</span><span class="sep"> · </span>
+        <span>Rahul Ahuja</span><span class="sep"> · </span>
+        <span>Meda Lazar</span><span class="sep"> · </span>
+        <span>Ashish Garg</span><span class="sep"> · </span>
+        <span>Pratik Likhar</span><span class="sep"> · </span>
+        <span>Senthil Yogamani</span>
+      </div>
+      <!-- EDIT: add author affiliations here when ready, e.g.
+      <p class="venue"><sup>1</sup>Affiliation A &nbsp; <sup>2</sup>Affiliation B</p> -->
+      <p class="venue">Published at the <b>DriveX Workshop, ECCV 2026</b> &nbsp;·&nbsp; arXiv:2608.28656</p>
+
+      <!-- ============================ BUTTONS ============================ -->
+      <div class="btns">
+        <a class="btn" href="https://arxiv.org/abs/2608.28656" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm8 1.5V8h4.5L14 3.5z"/></svg>
+          arXiv Abstract
+        </a>
+        <a class="btn" href="https://arxiv.org/pdf/2608.28656" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 3h14v2H5v-2z"/></svg>
+          PDF
+        </a>
+        <a class="btn ghost" href="#bibtex">
+          <svg viewBox="0 0 24 24"><path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h10v2H4z"/></svg>
+          BibTeX
+        </a>
+        <!-- EDIT: when a code release / video is ready, add buttons here:
+        <a class="btn ghost" href="URL">Code</a>
+        <a class="btn ghost" href="URL">Video</a> -->
+      </div>
+    </header>
+
+    <!-- ============================ ABSTRACT ============================ -->
+    <section id="abstract" class="abstract">
+      <h2>Abstract</h2>
+      <p>Behavior-cloned Vision-Language-Action (VLA) driving policies struggle with rare rule-governed maneuvers at signalized intersections. Braking and launching examples contribute little to averaged trajectory loss, while fused representations lack explicit supervision for the governing traffic-light and stop-line state. We present <b>RedLight-VLA</b>, a training objective that uses expert futures and automatically generated perception targets without additional manual rule annotation. First, trajectory-derived <b>behavioral reweighting (BR)</b> emphasizes rare deceleration and acceleration using rotation-invariant longitudinal dynamics and a scale-preserving reduction that exactly recovers the baseline when disabled. Second, parallel auxiliary <b>(AUX) heads</b> ground traffic-light and stop-line state in continuous post-fusion rule tokens, without autoregressive language generation or changes to the trajectory decoder. We evaluate on a curated set of 20&nbsp;s sequences with a 5&nbsp;s prediction horizon. Against an otherwise identical VLA baseline, RedLight-VLA reduces red-light stop-line overshoot from 7.3% to 6.8%, reduces stop-line velocity error by 12.7%, and improves 3&nbsp;s traffic-light-sliced ADE/FDE from 0.274/0.964&nbsp;m to 0.247/0.897&nbsp;m. The combined model also improves non-traffic-light ADE/FDE from 0.268/0.956&nbsp;m to 0.241/0.876&nbsp;m and outperforms either mechanism alone on all four sliced displacement measures.</p>
+    </section>
+
+    <!-- ============================ APPROACH ============================ -->
+    <section id="approach">
+      <h2>Approach</h2>
+      <p style="color:var(--muted);margin-top:-4px">Two mechanisms added on top of a standard VLA policy — no manual rule labels, no changes to the trajectory decoder.</p>
+      <div class="cards">
+        <div class="card">
+          <span class="tag">BR</span>
+          <h3>Behavioral Reweighting</h3>
+          <p>Emphasizes rare deceleration and acceleration events using rotation-invariant longitudinal dynamics derived from expert futures. A scale-preserving reduction exactly recovers the baseline objective when disabled — so the reweighting adds emphasis without distorting the loss.</p>
+        </div>
+        <div class="card">
+          <span class="tag">AUX</span>
+          <h3>Auxiliary Rule-Grounding Heads</h3>
+          <p>Parallel heads ground traffic-light and stop-line state in continuous post-fusion rule tokens, supervised by automatically generated perception targets. No autoregressive language generation and no changes to the trajectory decoder are required.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ RESULTS ============================ -->
+    <section id="results">
+      <h2>Results</h2>
+      <div class="stats">
+        <div class="stat"><div class="big">7.3% → 6.8%</div><div class="lbl">Red-light stop-line overshoot</div></div>
+        <div class="stat"><div class="big">−12.7%</div><div class="lbl">Stop-line velocity error</div></div>
+        <div class="stat"><div class="big">0.247 / 0.897 m</div><div class="lbl">3 s traffic-light ADE / FDE</div></div>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>Metric</th><th style="text-align:right">VLA baseline</th><th style="text-align:right">RedLight-VLA</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Red-light stop-line overshoot</td><td class="num">7.3%</td><td class="num better">6.8%</td></tr>
+            <tr><td>Traffic-light ADE / FDE (3 s)</td><td class="num">0.274 / 0.964 m</td><td class="num better">0.247 / 0.897 m</td></tr>
+            <tr><td>Non-traffic-light ADE / FDE</td><td class="num">0.268 / 0.956 m</td><td class="num better">0.241 / 0.876 m</td></tr>
+            <tr><td>Green-light false stops</td><td class="num">3.2%</td><td class="num">3.9%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">Controlled variants share the same backbone, training data, decoder, and evaluation population. Combining BR with AUX supervision mitigates the larger green-light false-stop increase observed for AUX alone (4.0%), and the combined model outperforms either mechanism alone on all four sliced displacement measures.</p>
+    </section>
+
+    <!-- ============================ BIBTEX ============================ -->
+    <section id="bibtex">
+      <h2>Citation</h2>
+      <div class="copybar">
+        <span style="color:var(--muted);font-size:.9rem">Cite this work</span>
+        <button class="copybtn" id="copyBib">Copy BibTeX</button>
+      </div>
+<pre class="bib" id="bibtext">@inproceedings{sudhakar2026redlightvla,
+  title     = {RedLight-VLA: Models for traffic-rule grounding and behavioral
+               emphasis in driving policies},
+  author    = {Sudhakar, Bala Murali Manoghar Sai and Sridhar, Sourab Bapu and
+               Das, Sandipan and Ahuja, Rahul and Lazar, Meda and Garg, Ashish and
+               Likhar, Pratik and Yogamani, Senthil},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)
+               Workshops, DriveX},
+  year      = {2026},
+  eprint    = {2608.28656},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO}
+}</pre>
+    </section>
+
+    <footer>
+      <p>arXiv:2608.28656 · cs.RO / cs.CV · ECCV 2026 DriveX Workshop</p>
+      <p>© 2026 the authors. Page content licensed CC BY 4.0.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('copyBib').addEventListener('click', function(){
+      var t = document.getElementById('bibtext').innerText;
+      navigator.clipboard.writeText(t).then(function(){
+        var b = document.getElementById('copyBib');
+        var old = b.textContent; b.textContent = 'Copied ✓';
+        setTimeout(function(){ b.textContent = old; }, 1600);
+      });
+    });
+  </script>
+</body>
+</html>
