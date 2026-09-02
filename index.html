@@ -81,122 +81,154 @@
 
   <style>
     :root{
-      --bg:#ffffff; --surface:#f6f8fc; --surface-2:#eef2f9;
-      --ink:#12161f; --muted:#5a6478; --line:#e2e8f2;
-      --brand:#c62828; --brand-2:#1565c0; --accent:#2e7d32;
-      --amber:#f9a825; --radius:16px; --maxw:920px;
+      --bg:#ffffff; --surface:#f7f9fd; --surface-2:#eef2f9;
+      --ink:#12161f; --muted:#5a6478; --line:#e4e9f2;
+      --brand:#d32f2f; --brand-2:#1565c0; --accent:#2e7d32;
+      --amber:#f9a825; --radius:18px; --maxw:1000px;
+      --nav-h:58px;
       --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
       --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     }
     @media (prefers-color-scheme: dark){
       :root{
-        --bg:#0b0f1a; --surface:#121828; --surface-2:#161d30;
-        --ink:#eef2fb; --muted:#9aa6bf; --line:#243049;
+        --bg:#0a0e17; --surface:#111827; --surface-2:#161f31; --line:#212c44;
+        --ink:#eef2fb; --muted:#9aa6bf;
         --brand:#ff6b6b; --brand-2:#7aa8ff; --accent:#5bd88a; --amber:#ffcc33;
       }
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
-      line-height:1.65;-webkit-font-smoothing:antialiased;}
+      line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     a{color:var(--brand-2);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-    /* ---- traffic-light top bar ---- */
-    .topbar{height:6px;display:flex}
-    .topbar i{flex:1}
-    .topbar i:nth-child(1){background:var(--brand)}
-    .topbar i:nth-child(2){background:var(--amber)}
-    .topbar i:nth-child(3){background:var(--accent)}
+    /* ---------- sticky nav ---------- */
+    nav{position:sticky;top:0;z-index:50;height:var(--nav-h);
+      background:color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);
+      border-bottom:1px solid var(--line)}
+    .nav-in{max-width:var(--maxw);margin:0 auto;height:100%;padding:0 24px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
+    .brand:hover{text-decoration:none}
+    .brand .dots{display:flex;gap:4px}
+    .brand .dots i{width:9px;height:9px;border-radius:50%}
+    .brand .dots i:nth-child(1){background:var(--brand)}
+    .brand .dots i:nth-child(2){background:var(--amber)}
+    .brand .dots i:nth-child(3){background:var(--accent)}
+    .nav-links{display:flex;gap:22px;align-items:center}
+    .nav-links a{color:var(--muted);font-weight:600;font-size:.92rem}
+    .nav-links a:hover{color:var(--ink);text-decoration:none}
+    .nav-links a.ext{color:var(--brand-2)}
+    @media (max-width:720px){.nav-links a:not(.ext){display:none}}
 
-    /* ---- hero ---- */
-    header.hero{padding:56px 0 30px;text-align:center}
-    .badge{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.04em;
-      text-transform:uppercase;color:var(--brand-2);background:var(--surface-2);
-      border:1px solid var(--line);padding:7px 15px;border-radius:999px;margin-bottom:22px}
-    h1.title{font-size:clamp(1.9rem,4.6vw,3rem);line-height:1.12;margin:.1em 0 .35em;
-      letter-spacing:-.02em;font-weight:800}
+    section{padding:52px 0;border-top:1px solid var(--line);scroll-margin-top:calc(var(--nav-h) + 12px)}
+
+    /* ---------- hero ---------- */
+    header.hero{padding:64px 0 48px;border-top:none}
+    .eyebrow{font-size:.8rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--brand);margin-bottom:20px}
+    h1.title{font-size:clamp(2.1rem,5.4vw,3.5rem);line-height:1.08;margin:0 0 22px;
+      letter-spacing:-.025em;font-weight:850;max-width:14ch}
     h1.title .accent{color:var(--brand)}
-    .subtitle{font-size:clamp(1rem,2.2vw,1.25rem);color:var(--muted);max-width:720px;
-      margin:0 auto 26px}
-    .authors{font-size:1.02rem;line-height:2;margin:6px 0 4px}
-    .authors a{color:var(--ink);font-weight:600}
-    .authors .sep{color:var(--muted)}
-    .venue{color:var(--muted);margin-top:10px;font-size:.98rem}
+    .subtitle{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--muted);max-width:70ch;margin:0 0 22px}
+    .subtitle b{color:var(--ink);font-weight:650}
+    .authors{font-size:1.02rem;line-height:1.9;margin:4px 0;max-width:80ch}
+    .authors span{color:var(--ink);font-weight:600}
+    .authors .sep{color:var(--muted);font-weight:400}
+    .venue{color:var(--muted);margin-top:12px;font-size:.98rem}
     .venue b{color:var(--ink)}
 
-    /* ---- buttons ---- */
-    .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:28px 0 8px}
-    .btn{display:inline-flex;align-items:center;gap:9px;font-weight:650;font-size:.98rem;
-      padding:11px 20px;border-radius:999px;border:1px solid var(--line);
+    .btns{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+    .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.98rem;
+      padding:12px 22px;border-radius:999px;border:1px solid var(--line);
       background:var(--ink);color:var(--bg);transition:transform .12s ease,opacity .12s ease}
     .btn:hover{transform:translateY(-2px);text-decoration:none;opacity:.92}
     .btn.ghost{background:transparent;color:var(--ink)}
     .btn svg{width:18px;height:18px;fill:currentColor;flex:none}
 
-    /* ---- sections ---- */
-    section{padding:34px 0;border-top:1px solid var(--line)}
-    section:first-of-type{border-top:none}
-    h2{font-size:1.5rem;font-weight:750;letter-spacing:-.01em;margin:0 0 14px;
-      display:flex;align-items:center;gap:11px}
-    h2::before{content:"";width:10px;height:22px;border-radius:3px;
-      background:linear-gradient(var(--brand),var(--amber),var(--accent))}
-    .abstract p{font-size:1.06rem;color:var(--ink)}
+    /* ---------- stat tiles ---------- */
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+    .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+    .stat .big{font-size:1.9rem;font-weight:850;letter-spacing:-.02em;color:var(--brand);line-height:1}
+    .stat .lbl{color:var(--muted);font-size:.86rem;margin-top:9px;line-height:1.45}
+    @media (max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:460px){.stats{grid-template-columns:1fr}}
 
-    /* ---- method cards ---- */
-    .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
-    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-      padding:22px}
-    .card h3{margin:0 0 8px;font-size:1.12rem}
+    h2{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;margin:0 0 8px;
+      display:flex;align-items:center;gap:12px}
+    h2::before{content:"";width:11px;height:24px;border-radius:3px;
+      background:linear-gradient(var(--brand),var(--amber),var(--accent))}
+    .lead{color:var(--muted);font-size:1.02rem;margin:0 0 22px;max-width:75ch}
+    .abstract p{font-size:1.08rem;color:var(--ink);max-width:76ch}
+
+    /* ---------- method figure ---------- */
+    figure{margin:0}
+    .figbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:26px 22px 18px}
+    .figbox svg{width:100%;height:auto;display:block}
+    figcaption{color:var(--muted);font-size:.9rem;margin-top:14px;text-align:center;max-width:80ch;margin-inline:auto}
+    .dg-box{fill:var(--surface-2);stroke:var(--line);stroke-width:1.5}
+    .dg-hi{fill:color-mix(in srgb,var(--brand) 12%,var(--surface-2))}
+    .dg-hi2{fill:color-mix(in srgb,var(--accent) 14%,var(--surface-2))}
+    .dg-t{fill:var(--ink);font-family:var(--sans);font-weight:700}
+    .dg-s{fill:var(--muted);font-family:var(--sans)}
+    .dg-arrow{stroke:var(--muted);stroke-width:2;fill:none;marker-end:url(#ah)}
+    .dg-tag{fill:var(--brand);font-family:var(--sans);font-weight:800}
+    .dg-tag2{fill:var(--accent);font-family:var(--sans);font-weight:800}
+
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+    .card h3{margin:0 0 8px;font-size:1.14rem}
     .card .tag{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:700;
-      padding:3px 9px;border-radius:6px;background:var(--surface-2);color:var(--brand-2);
-      margin-bottom:12px}
+      padding:3px 9px;border-radius:6px;background:var(--surface-2);color:var(--brand-2);margin-bottom:12px}
     .card p{margin:0;color:var(--muted);font-size:.98rem}
     @media (max-width:640px){.cards{grid-template-columns:1fr}}
 
-    /* ---- results table ---- */
     .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
     table{border-collapse:collapse;width:100%;font-size:.96rem;min-width:520px}
-    th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line)}
-    thead th{background:var(--surface-2);font-weight:700;font-size:.82rem;
-      text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+    th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+    thead th{background:var(--surface-2);font-weight:700;font-size:.8rem;text-transform:uppercase;
+      letter-spacing:.03em;color:var(--muted)}
     tbody tr:last-child td{border-bottom:none}
     td.num{font-family:var(--mono);text-align:right}
     .better{color:var(--accent);font-weight:700}
-    .caption{color:var(--muted);font-size:.86rem;margin-top:10px}
+    .caption{color:var(--muted);font-size:.88rem;margin-top:12px;max-width:80ch}
 
-    /* ---- highlight stats ---- */
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0 6px}
-    .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-      padding:20px;text-align:center}
-    .stat .big{font-size:1.7rem;font-weight:800;color:var(--brand)}
-    .stat .lbl{color:var(--muted);font-size:.86rem;margin-top:4px}
-    @media (max-width:640px){.stats{grid-template-columns:1fr}}
-
-    /* ---- bibtex ---- */
     pre.bib{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);
-      padding:20px;overflow-x:auto;font-family:var(--mono);font-size:.86rem;line-height:1.6;
-      color:var(--ink)}
-    .copybar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-    .copybtn{cursor:pointer;font-family:var(--sans);font-weight:650;font-size:.85rem;
-      padding:7px 14px;border-radius:8px;border:1px solid var(--line);
-      background:var(--surface);color:var(--ink)}
+      padding:22px;overflow-x:auto;font-family:var(--mono);font-size:.86rem;line-height:1.6;color:var(--ink)}
+    .copybar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .copybtn{cursor:pointer;font-family:var(--sans);font-weight:700;font-size:.85rem;
+      padding:8px 15px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
     .copybtn:hover{background:var(--surface-2)}
 
-    footer{padding:30px 0 50px;text-align:center;color:var(--muted);font-size:.88rem;
-      border-top:1px solid var(--line)}
+    footer{padding:38px 0 60px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+    footer a{color:var(--muted);text-decoration:underline}
   </style>
 </head>
 <body>
-  <div class="topbar"><i></i><i></i><i></i></div>
+  <!-- ============================ NAV ============================ -->
+  <nav>
+    <div class="nav-in">
+      <a class="brand" href="#top"><span class="dots"><i></i><i></i><i></i></span>RedLight-VLA</a>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#bibtex">BibTeX</a>
+        <a class="ext" href="https://arxiv.org/abs/2608.28656" target="_blank" rel="noopener">arXiv ↗</a>
+      </div>
+    </div>
+  </nav>
 
-  <div class="wrap">
+  <div class="wrap" id="top">
     <!-- ============================ HERO ============================ -->
     <header class="hero">
-      <span class="badge">ECCV 2026 · DriveX Workshop</span>
-      <h1 class="title"><span class="accent">RedLight-VLA</span>: Traffic-Rule Grounding &amp; Behavioral Emphasis in Driving Policies</h1>
-      <p class="subtitle">A training objective that teaches Vision-Language-Action driving policies to obey traffic lights and stop lines — emphasizing the rare braking and launching maneuvers that averaged trajectory loss ignores.</p>
+      <div class="eyebrow">ECCV 2026 · DriveX Workshop · Autonomous Driving</div>
+      <h1 class="title"><span class="accent">RedLight-VLA</span>: Traffic-Rule Grounding &amp; Behavioral Emphasis</h1>
+      <p class="subtitle">A training objective that teaches <b>Vision-Language-Action</b> driving policies to obey traffic lights and stop lines — emphasizing the rare braking and launching maneuvers that averaged trajectory loss ignores, with <b>no manual rule annotation</b>.</p>
 
       <div class="authors">
         <span>Bala Murali Manoghar Sai Sudhakar</span><span class="sep"> · </span>
@@ -212,23 +244,28 @@
       <p class="venue"><sup>1</sup>Affiliation A &nbsp; <sup>2</sup>Affiliation B</p> -->
       <p class="venue">Published at the <b>DriveX Workshop, ECCV 2026</b> &nbsp;·&nbsp; arXiv:2608.28656</p>
 
-      <!-- ============================ BUTTONS ============================ -->
       <div class="btns">
-        <a class="btn" href="https://arxiv.org/abs/2608.28656" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm8 1.5V8h4.5L14 3.5z"/></svg>
-          arXiv Abstract
-        </a>
         <a class="btn" href="https://arxiv.org/pdf/2608.28656" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 3h14v2H5v-2z"/></svg>
-          PDF
+          Paper (PDF)
         </a>
-        <a class="btn ghost" href="#bibtex">
-          <svg viewBox="0 0 24 24"><path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h10v2H4z"/></svg>
-          BibTeX
+        <a class="btn ghost" href="https://arxiv.org/abs/2608.28656" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm8 1.5V8h4.5L14 3.5z"/></svg>
+          arXiv
         </a>
-        <!-- EDIT: when a code release / video is ready, add buttons here:
-        <a class="btn ghost" href="URL">Code</a>
-        <a class="btn ghost" href="URL">Video</a> -->
+        <a class="btn ghost" href="#results">
+          <svg viewBox="0 0 24 24"><path d="M4 20V10h4v10H4zm6 0V4h4v16h-4zm6 0v-7h4v7h-4z"/></svg>
+          See results
+        </a>
+        <!-- EDIT: add Code / Video buttons here when available -->
+      </div>
+
+      <!-- headline stats -->
+      <div class="stats">
+        <div class="stat"><div class="big">7.3→6.8%</div><div class="lbl">Red-light stop-line overshoot</div></div>
+        <div class="stat"><div class="big">−12.7%</div><div class="lbl">Stop-line velocity error</div></div>
+        <div class="stat"><div class="big">0.247 m</div><div class="lbl">3&nbsp;s traffic-light ADE (from 0.274)</div></div>
+        <div class="stat"><div class="big">0 labels</div><div class="lbl">No manual rule annotation required</div></div>
       </div>
     </header>
 
@@ -238,10 +275,52 @@
       <p>Behavior-cloned Vision-Language-Action (VLA) driving policies struggle with rare rule-governed maneuvers at signalized intersections. Braking and launching examples contribute little to averaged trajectory loss, while fused representations lack explicit supervision for the governing traffic-light and stop-line state. We present <b>RedLight-VLA</b>, a training objective that uses expert futures and automatically generated perception targets without additional manual rule annotation. First, trajectory-derived <b>behavioral reweighting (BR)</b> emphasizes rare deceleration and acceleration using rotation-invariant longitudinal dynamics and a scale-preserving reduction that exactly recovers the baseline when disabled. Second, parallel auxiliary <b>(AUX) heads</b> ground traffic-light and stop-line state in continuous post-fusion rule tokens, without autoregressive language generation or changes to the trajectory decoder. We evaluate on a curated set of 20&nbsp;s sequences with a 5&nbsp;s prediction horizon. Against an otherwise identical VLA baseline, RedLight-VLA reduces red-light stop-line overshoot from 7.3% to 6.8%, reduces stop-line velocity error by 12.7%, and improves 3&nbsp;s traffic-light-sliced ADE/FDE from 0.274/0.964&nbsp;m to 0.247/0.897&nbsp;m. The combined model also improves non-traffic-light ADE/FDE from 0.268/0.956&nbsp;m to 0.241/0.876&nbsp;m and outperforms either mechanism alone on all four sliced displacement measures.</p>
     </section>
 
-    <!-- ============================ APPROACH ============================ -->
-    <section id="approach">
-      <h2>Approach</h2>
-      <p style="color:var(--muted);margin-top:-4px">Two mechanisms added on top of a standard VLA policy — no manual rule labels, no changes to the trajectory decoder.</p>
+    <!-- ============================ METHOD ============================ -->
+    <section id="method">
+      <h2>Method in 30 seconds</h2>
+      <p class="lead">Two mechanisms bolt onto a standard VLA policy — no manual rule labels, and no changes to the trajectory decoder. Both are trained from expert futures and automatically generated perception targets.</p>
+
+      <figure>
+        <div class="figbox">
+          <svg viewBox="0 0 920 300" role="img" aria-label="RedLight-VLA architecture: a VLA backbone whose post-fusion rule tokens feed a trajectory decoder (with behavioral reweighting) and parallel auxiliary rule-grounding heads.">
+            <defs>
+              <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+                <path d="M0 0 L9 4.5 L0 9 z" fill="var(--muted)"/>
+              </marker>
+            </defs>
+            <!-- inputs -->
+            <rect class="dg-box" x="14" y="112" width="150" height="76" rx="12"/>
+            <text class="dg-t" x="89" y="142" text-anchor="middle" font-size="14">Surround cameras</text>
+            <text class="dg-s" x="89" y="163" text-anchor="middle" font-size="13">+ language prompt</text>
+            <!-- backbone -->
+            <path class="dg-arrow" d="M168 150 H214"/>
+            <rect class="dg-box" x="216" y="96" width="196" height="108" rx="12"/>
+            <text class="dg-t" x="314" y="132" text-anchor="middle" font-size="15">VLA backbone</text>
+            <text class="dg-s" x="314" y="153" text-anchor="middle" font-size="12.5">vision–language fusion</text>
+            <text class="dg-s" x="314" y="176" text-anchor="middle" font-size="12.5">→ post-fusion rule tokens</text>
+            <!-- to trajectory decoder (top) -->
+            <path class="dg-arrow" d="M412 128 C446 128 452 70 486 70"/>
+            <rect class="dg-box dg-hi" x="488" y="34" width="220" height="76" rx="12"/>
+            <text class="dg-t" x="598" y="64" text-anchor="middle" font-size="14">Trajectory decoder</text>
+            <text class="dg-s" x="598" y="86" text-anchor="middle" font-size="12.5">5&nbsp;s future waypoints</text>
+            <text class="dg-tag" x="488" y="24" font-size="12.5">◆ BR — up-weights rare braking / launching</text>
+            <!-- to AUX heads (bottom) -->
+            <path class="dg-arrow" d="M412 172 C446 172 452 232 486 232"/>
+            <rect class="dg-box dg-hi2" x="488" y="196" width="220" height="82" rx="12"/>
+            <text class="dg-t" x="598" y="224" text-anchor="middle" font-size="14">AUX rule-grounding heads</text>
+            <text class="dg-s" x="598" y="246" text-anchor="middle" font-size="12.5">traffic-light state · stop-line state</text>
+            <text class="dg-tag2" x="488" y="292" font-size="12.5">◆ AUX — auto-generated perception targets, no language gen</text>
+            <!-- output -->
+            <path class="dg-arrow" d="M708 72 C760 72 760 150 786 150"/>
+            <path class="dg-arrow" d="M708 236 C760 236 760 150 786 150"/>
+            <rect class="dg-box" x="788" y="118" width="120" height="64" rx="12"/>
+            <text class="dg-t" x="848" y="146" text-anchor="middle" font-size="13">Rule-aware</text>
+            <text class="dg-t" x="848" y="164" text-anchor="middle" font-size="13">trajectory</text>
+          </svg>
+        </div>
+        <figcaption>The trajectory decoder is unchanged; <b>behavioral reweighting (BR)</b> reshapes only its loss, and <b>auxiliary heads (AUX)</b> add supervision in parallel. Combining BR + AUX beats either mechanism alone on all four sliced displacement measures.</figcaption>
+      </figure>
+
       <div class="cards">
         <div class="card">
           <span class="tag">BR</span>
@@ -259,12 +338,7 @@
     <!-- ============================ RESULTS ============================ -->
     <section id="results">
       <h2>Results</h2>
-      <div class="stats">
-        <div class="stat"><div class="big">7.3% → 6.8%</div><div class="lbl">Red-light stop-line overshoot</div></div>
-        <div class="stat"><div class="big">−12.7%</div><div class="lbl">Stop-line velocity error</div></div>
-        <div class="stat"><div class="big">0.247 / 0.897 m</div><div class="lbl">3 s traffic-light ADE / FDE</div></div>
-      </div>
-
+      <p class="lead">Controlled variants share the same backbone, training data, decoder, and evaluation population — so every delta is attributable to BR and AUX alone.</p>
       <div class="tablewrap">
         <table>
           <thead>
@@ -278,14 +352,14 @@
           </tbody>
         </table>
       </div>
-      <p class="caption">Controlled variants share the same backbone, training data, decoder, and evaluation population. Combining BR with AUX supervision mitigates the larger green-light false-stop increase observed for AUX alone (4.0%), and the combined model outperforms either mechanism alone on all four sliced displacement measures.</p>
+      <p class="caption">Combining BR with AUX supervision mitigates the larger green-light false-stop increase observed for AUX alone (4.0%), and the combined model outperforms either mechanism alone on all four sliced displacement measures.</p>
     </section>
 
     <!-- ============================ BIBTEX ============================ -->
     <section id="bibtex">
       <h2>Citation</h2>
       <div class="copybar">
-        <span style="color:var(--muted);font-size:.9rem">Cite this work</span>
+        <span style="color:var(--muted);font-size:.92rem">Cite this work</span>
         <button class="copybtn" id="copyBib">Copy BibTeX</button>
       </div>
 <pre class="bib" id="bibtext">@inproceedings{sudhakar2026redlightvla,
@@ -305,7 +379,7 @@
 
     <footer>
       <p>arXiv:2608.28656 · cs.RO / cs.CV · ECCV 2026 DriveX Workshop</p>
-      <p>© 2026 the authors. Page content licensed CC BY 4.0.</p>
+      <p>© 2026 the authors. Page content licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
     </footer>
   </div>
 
